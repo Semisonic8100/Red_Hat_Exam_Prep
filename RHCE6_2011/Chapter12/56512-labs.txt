@@ -1,0 +1,39 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 12. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1
+
+In this lab, you'll create a script that backs up all files from the /etc directory to a newly created /backup directory. In practice, you might choose to run that kind of script on a relatively infrequent basis, perhaps weekly. However, for the purpose of this lab, make sure it's run on an hourly basis.
+
+Once the script is configured, you may not have an hour to wait. In that case, run an appropriate date command to move the local clock ahead to the next hour. For example, if the current date is 11:43 a.m. on July 11, the following command sets the current time to noon:
+
+$ date 07111200
+
+
+Lab 2
+
+In this lab, you'll disable responses to the ping command, using kernel settings. (On an exam, it would also be acceptable to disable responses to the ping command with the help of the Firewall Configuration tool. But when possible, it's good to know more than one method.)
+
+
+Lab 3
+
+Make a copy of the /etc/vsftpd/vsftpd.conf file. Set it up as an RPM package, to be installed in the /opt/sampleftp directory.
+
+
+Lab 4
+
+Copy the OVERVIEW file from the /usr/share/doc/postfix-2.6.6/README_FILES directory. Set it up as an RPM package, to be installed in the /opt/postfixinfo directory.
+
+
+Lab 5
+
+On the server1.example.com system, set up a custom route to the network with the outsider1.example.org system. Use the same gateway address as the default gateway.
+
+
+Lab 6
+
+In this lab, you'll take the outsider1.example.org system, and set it up as a Kerberos client. Assume the LDAP server is on system 192.168.100.1; the KDC is located on system maui.example.org; and the Kerberos admin server can be found on that same system. Since Kerberos will be used, TLS is not required for LDAP.
+
+If the outsider1.example.org system is on a different subnet, substitute the IPv4 gateway address for the system for 192.168.100.1.

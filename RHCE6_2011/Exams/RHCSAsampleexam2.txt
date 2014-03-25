@@ -1,0 +1,36 @@
+RHCSA Sample Exam 2
+
+You may either start with the preconfigured RHEL 6 system described in Appendix A. If necessary, make sure that system is currently powered down. As discussed in Appendix A, a current repository of the installation DVD is available from an FTP server configured on the local system. You'll have two and a half hours to complete the following tasks:
+
+1. Install VM software on the local system.
+
+2. Use the ks2.cfg file from the Exams/ subdirectory to create a virtual machine. Modify as needed to set up a system with hostname outsider2.example.org on IPv4 address 192.168.100.101. (If there's a conflict with other hardware, IP address 192.168.101.101 is an acceptable IPv4 address for outsider2.example.org.)
+
+The additional steps in this exam should be applied to the outsider2.example.org system. If you were not successful creating an outsider2.example.com system, it's acceptable to set it up on the local physical host system.
+
+3. Use ssh to access the VM, as if it were a remote system.
+
+4. Configure a new partition of 500MB in the available empty space of the drive, formatted to ext4.
+
+5. Configure that volume on the new /cooks directory, with the ACL option.
+
+6. Set up additional swap space in the remaining empty space of the drive.
+
+7. Make sure that the new /cooks directory and swap space are automatically mounted the next time the system is booted. Use the UUID of the new volume.
+
+8. Configure the following users: linus, richard, mark, bill. Deny users bill and richard access to the /cooks directory. Allow access to all other users.
+
+9. Set up the automounter, and configure it to read the DVD on the /misc/dvd directory.
+
+10. Download a different kernel from the Chapter7/ subdirectory of the book CD. Install that kernel. Make sure the bootloader default points to the original kernel.
+
+11. Set up the system to boot by default into runlevel 3.
+
+12. Install and configure the vsFTP server with one twist: make sure that anonymous users who connect are sent to the /ftp directory.
+
+13. Configure a local NTP server on one virtual machine system. Set this NTP server to point to the physical host.
+
+14. Make sure SELinux is set in permissive mode. (You're still responsible for any problems related to SELinux.)
+
+15. Power down the exam system.
+

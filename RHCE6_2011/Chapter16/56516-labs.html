@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110426;13360000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;12044800">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		H3 { margin-bottom: 0.04in; direction: ltr; color: #000000; line-height: 150%; text-align: left; widows: 2; orphans: 2 }
+		H3.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		H3.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		H3.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA; font-weight: normal }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>LABS</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">During the Red Hat exams, the
+tasks will be presented electronically. Therefore, this book presents
+most of the labs electronically as well. For more information, see
+the Lab Questions section toward the end of Chapter 16. Most of the
+labs for this chapter are straightforward and require a very few
+commands or changes to one or two configuration files.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><B>Lab 1: Basic NFS Configuration</B></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">You'll need two Linux computers
+for this lab: one as an NFS server, and a second as an NFS client.
+Call these computers server1.example.com and tester1.example.com.
+Configure a directory named /shared. Add a single file to that
+directory. Start by configuring rules to share that directory with
+the no_root_squash directive. For any firewall that's configured,
+make sure to limit access to the example.com network. If you followed
+the instructions in Chapter 1, that would be the 192.168.122.0/24
+network.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Go to the remote system, and make
+sure that you're able to view shared NFS directories from the server.
+Mount that system on a local /testing directory. Can you copy files
+to that directory?</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Unmount the share, and remove the
+no_root_squash directive. What happens when you mount the NFS share
+for a second time from the client?</FONT></P>
+<H3 CLASS="western" STYLE="margin-top: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</H3>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 2: Standard
+NFS Configuration</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">This lab can use the same two
+systems used in Lab 1. On the server, share the /home directories and
+provide write permissions to the client computer. On the client, set
+up the /home directory from the NFS server to be mounted the next
+time that client computer is booted. Since the client computer
+probably already has a /home directory, set it up on the /remote
+directory.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 3: NFS and
+SELinux</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll experiment
+with different SELinux settings. For example, if you're asked to
+prevent writes to any shared NFS directories, what do you do?</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 4: Configure
+a vsFTP Server with Messages</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Configure an FTP server on the
+server1.example.com system. Enable messages when users access the
+local /var/ftp and /var/ftp/pub directories. Add an appropriate
+one-line message to each directory. Test the result, preferably from
+a remote computer. Start the vsFTP server and see that it starts
+automatically the next time the server1.example.com system is
+rebooted.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 5: Configure
+a vsFTP server for Anonymous-only Downloads</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Make sure to allow only anonymous
+access. Don't allow anonymous users to upload to that server.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 6: Configure
+a vsFTP server on a special directory</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Do not run this lab on the vsFTP
+server configured in Chapter 1 for installation. The changes made in
+this lab would override changes made in Chapter 7 to ease the
+installation of new packages.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll set up the
+vsFTP server for anonymous access to read and download files from the
+local /ftp directory. You can allow the vsFTP server to ignore the
+/var/ftp directory for this lab.</FONT></P>
+</BODY>
+</HTML>

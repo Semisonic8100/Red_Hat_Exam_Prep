@@ -1,0 +1,51 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 14. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1
+
+In this first lab, you'll install and configure Apache to start and run automatically the next time the system is booted. You'll also configure the default home page for the local distribution as the default home page for the local computer.
+
+The default home page for RHEL 6 is located in the /usr/share/doc/HTML directory. For US English users, the appropriate index.html file is in the en-US/ home directory. Other subdirectories apply for users with other languages and national locations. Missing icons are acceptable for the purpose of this lab.
+
+
+Lab 2
+
+In this lab, you'll examine the Apache manual that comes with the httpd-manual package. Once you're familiar with that manual, it could come in handy on the job, or even in a situation where Internet access is not available, such as a Red Hat exam.
+
+If the httpd-manual package is not yet installed, make sure to do so through the "Web Server" package group. Activate the Apache web server, and use a browser to navigate to the http://localhost/manual URL. For the purpose of this lab, a GUI browser is acceptable.
+
+Click the Virtual Hosts link, and review the information for Name-based Virtual Hosts. It includes more examples of how virtual hosts can be configured in the httpd.conf configuration file.
+
+Return to the original manual URL. Click CGI: Dynamic Content. Review the information about CGI scripts, including the information on directory configuration to accommodate such scripts.
+
+
+Lab 3
+
+In this lab, you'll configure two web sites on the local Apache server. Call them big.example.com and small.example.com. Don't forget to create needed directories to set up these web sites in the /etc/hosts file. Make sure those web sites are accessible to users from remote computers on the example.com network. Add an appropriate index.html file to the DocumentRoot for each web site. Simple web pages, such as a single line of text, are acceptable (no HTML coding is necessary). Don't forget that SELinux settings need to be compatible.
+
+
+Lab 4
+
+Configure a self-signed certificate for the big.example.com URL discussed in Lab 3. Repeat the process for the small.example.com URL.
+
+
+Lab 5
+
+Continuing on with Apache, configure secure versions for each of the two web sites created in Lab 3, using the certificates shown in Lab 4. Make sure that appropriate directories are available for each secure web site.
+
+
+Lab 6
+
+Configure a user home directory, with access through the browser limited to the user owner of that directory.
+
+
+Lab 7
+
+Configure a home directory for a group of users, with access through the browser limited to the members of that group. For the purpose of this lab, the group is named techsupport, with users named john, ivan, and rajiv.
+
+
+Lab 8
+
+Configure the regular big.example.com web site to handle CGI scripts in the cgi-bin/ subdirectory of the DocumentRoot. If successful, you'll be able to navigate to http://big.example.com/cgi-bin/hello.pl URL and see the words "Hello World."

@@ -1,0 +1,5 @@
+#!/bin/bash
+/bin/mkdir /root/backup 2> /dev/null
+/bin/cp /etc/sysconfig/network /root/backup
+/usr/bin/chattr +i /root/backup/network
+cp -f /root/Ch3Lab1testfile /etc/sysconfig/network

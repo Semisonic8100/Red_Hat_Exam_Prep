@@ -1,0 +1,35 @@
+RHCSA Sample Exam 1
+
+Start with the preconfigured RHEL 6 system described in Appendix A. If necessary, make sure that system is currently powered down. As discussed in Appendix A, a current repository of the installation DVD is available from an FTP server configured on the local system. You'll have two and a half hours to complete the following tasks:
+
+1. Make sure SELinux is set in enforcing mode. There will be an iptables-based firewall on this system.
+
+2. Install VM software on the local system.
+
+3. Use the ks.cfg file from the Exams/ subdirectory to create a virtual machine. Modify as needed to set up a system with hostname server2.example.com on IPv4 address 192.168.0.51.
+
+4. Configure the virtual machine to start automatically the next time the local physical host system is booted. 
+
+The additional steps in this exam should be applied to the server2.example.com system. If you were not successful creating a server2.example.com system, it's acceptable to set it up on the local physical host system.
+
+5. Configure a logical volume of 500MB in the available empty space of the drive, formatted to ext4.
+
+6. Make sure the volume is encrypted.
+
+7. Configure that volume on the new /house directory. Make sure that it's automatically mounted the next time the system is booted. Use the UUID of the new volume.
+
+8. Configure the following users for RHEL: nancy, randy, donna, and mike. Make nancy and randy part of a group named angels. Create a /home/angels directory and allow them to share files without having to change permissions or ownership on any file they put in this directory. Do not give donna or mike read privileges on this directory. 
+
+9. Make sure user mike's account expires after one week.
+
+10. Set up a job to delete all of the regular files in the /home/mike directory on the second day of every month at 3:50 a.m. 
+
+11. Set up Access Control Lists on the /home directory partition. Set up a project.test file in user mike's home directory. Configure ACLs on a file named project.test to allow user donna to read this file.
+
+12. Download a different version of the kernel, available from the CD, on the Chapter7/ subdirectory installation source. Set up the new stanza in the bootloader to boot into runlevel 1.
+
+13. Set up the root password as RedHat4Ever!
+
+14. Install an HTTP server accessible to all systems over the network.
+
+15. Power down the exam system. 

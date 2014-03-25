@@ -1,0 +1,35 @@
+RHCE Sample Exam 2
+
+Start with the preconfigured RHEL 6 system described in Appendix A. Make sure that system is currently powered down. As discussed in Appendix A, a current repository of the installation DVD is available from an FTP server configured on the local system. SELinux should be set to enforcing mode. You'll have two hours to complete the following tasks:
+
+1. Configure the server1.example.com system as a logging server. Configure the tester1.example.com system (or the physical host system) as a logging client.
+
+2. Configure the server1.example.com system as a Kerberos client on the example.com domain, with a KDC and administrative server of the physical host system.
+
+3. Set up an Apache web server with two regular virtual hosts. Set it up on URLs test1.example.com and test2.example.com. Create and use the /web subdirectory for this purpose. Include appropriate index.html files, with contents for each URL.
+
+4. Set up a shared subdirectory named cubs on that Apache web server, accessible to users elizabeth and fred. Limit access to the local network.
+
+5. Configure the system to work with a CGI application, accessible on the test1.example.com system. For that purpose, you may use the following code in an appropriate CGI script. Call it the good.pl file.
+
+#!/usr/bin/perl
+print "Content-type: text/html\n\n";
+print "Good Job!\n";
+
+6. Set up an FTP server that supports only anonymous access, even from outside your LAN. Do not allow access from any regular users, even if the ftp_home_dir boolean is on.
+
+7. Configure a caching-only DNS server that forwards requests to the physical host system.
+
+8. Set up a local SMTP server that supports access limited to systems on the local network.
+
+9. Configure an SSH server for user mike on the server1.example.com system. Configure password-free access, with passphrases, using key-based authentication from a remote system, either tester1.example.com or the physical host. Use the following passphrase:
+
+Linux rocks, Windows does not.
+
+10. Set up masquerading from the network with server1.example.com to outside networks, using the IP address of the physical host system.
+
+11. Configure a Samba server to share user home directories.
+
+12. Configure two NTP servers, one as a peer, the second as a regular server.
+
+13. Set up the system to avoid responding to the ping command.

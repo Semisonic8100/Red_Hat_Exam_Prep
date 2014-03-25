@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110330;14330000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11540600">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>LABS</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">During the Red Hat exams, the
+tasks will be presented electronically. Therefore, this book presents
+most of the labs electronically as well. For more information, see
+the Lab Questions section toward the end of Chapter 8. Most of the
+labs for this chapter are straightforward and require a very few
+commands or changes to one or two configuration files.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab</B><FONT FACE="Times New Roman, serif">
+1</FONT></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">For this lab, create a new user
+named newguy. Make sure that user is a member of the users group.
+Create a second user named intern. Create a special group named
+peons, and make both new users members of that group. Assign a GID of
+123456 to that group.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 2</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll make it a bit
+more difficult for the root administrative user to log into any
+console. Make whatever changes are required to limit local access
+from the root user to the sixth virtual console</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 3</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Create a new user named
+senioradm. Set up that user with full sudo privileges. But user
+senioradm should still be required to enter his regular account
+password before he's allowed to run an administrative command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 4</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Create a new user named
+junioradm. Set up that user with privileges to run the <B>fdisk</B>
+command, with the help of sudo. In this case, user junioradm should
+still be required to enter his regular account password before he's
+allowed to run the <B>fdisk </B>command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 5</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Make sure all new users get a
+copy of the info-* subdirectory of the /usr/share/doc directory,
+including all files therein. Test the result by creating a new user
+named infouser with the <B>useradd</B> command and the User Manager.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 6</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll create a
+private directory for a group of engineers designing some galleys.
+You'll want to create a group named galley for the engineers named
+mike, rick, terri, and maryam. They'll want to share files in the
+/home/galley directory. What do you need to do?</FONT></P>
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 13. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1
+
+Configure Postfix to enable authentication on the physical host system. Do not make any additional changes to the local system. Make sure e-mails can be sent from user to user locally. Forward e-mails directed to the local root account to a regular account on the local system.
+
+
+Lab 2
+
+Configure the Postfix system in Lab 1 to support access from the example.com network, or the corresponding IP address network. Configure a system on server1.example.com as a Postfix smart host, forwarding to the physical host system.
+
+
+Lab 3
+
+Configure the Postfix system in Lab1 to prohibit access from the example.org network (or the corresponding IP address network). Do not allow access from any network other than example.com.
+
+
+Lab 4
+
+Set up the sendmail service. Make sure the Postfix service is no longer operational, but keep it ready for use.
+
+
+Lab 5
+
+Configure sendmail to accept connections from the local system with both IPv4 and IPv6 addressing. Do not make any additional changes to the local system. Make sure e-mails can be sent from user to user locally. Forward e-mails directed to the local root account to a regular account on the local system.
+
+
+Lab 6
+
+Configure the sendmail system from Lab 5 to support access from the example.com network, or the corresponding IP address network. Configure a system on server1.example.com as a sendmail smart host, forwarding to the physical host system.
+
+
+Lab 7
+
+Configure the sendmail system configured in Lab 5 to prohibit access from the example.org network (or the corresponding IP address network). Do not allow access from any network other than example.com. IPv6 addressing is not required.

@@ -1,0 +1,6 @@
+#!/bin/bash
+/bin/mkdir /root/backup 2> /dev/null
+/bin/cp /etc/resolv.conf /root/backup
+/bin/rm -f /etc/resolv.conf
+/bin/cp /root/Ch3Lab4testfile /etc/resolv.conf
+/usr/bin/chattr +i /root/backup/*

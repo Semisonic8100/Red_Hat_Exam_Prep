@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110405;13060000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11580800">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		H3 { margin-bottom: 0.04in; direction: ltr; color: #000000; line-height: 150%; widows: 2; orphans: 2 }
+		H3.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		H3.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		H3.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA; font-weight: normal }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>LABS</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+During the Red Hat exams, the tasks will be presented electronically.
+Therefore, this book presents most of the labs electronically as
+well. For more information, see the Lab Questions section toward the
+end of Chapter 11. Most of the labs for this chapter are
+straightforward and require a very few commands or changes to one or
+two configuration files.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 1</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+The intent of this lab is to demonstrate a little of the capabilities
+of the files in the /etc/sysconfig directory. It's an opportunity for
+you to experiment, to see how such files can be used to modify how a
+service is started.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+In this lab, you'll work with the /etc/sysconfig file associated with
+the Apache web server, httpd. As with any other configuration file,
+you should back it up before making any changes. If you haven't yet
+installed the Apache web server, follow the instructions described
+earlier in this chapter or related instructions in the body of
+Chapter 1.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+1. Back up the current version of /etc/sysconfig/httpd.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+2. Make sure the Apache Web server is running; you can restart it
+with the <B>service httpd restart</B> command. (The <B>apachctl
+restart </B>command is explained in Chapter 14.)</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+3. Review currently running Apache processes with the <B>ps aux |
+grep httpd</B> command. How many Apache processes are currently
+running?</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+4. Open the /etc/sysconfig/httpd file, and add the following
+directive:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">OPTIONS=-l</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+5. Review the httpd man page. What do you think this option will do?</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+6. Restart the Apache web server. What happens?</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+7. Are there any Apache processes currently running?</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+8. Restore the original version of the /etc/sysconfig/httpd file.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+9. Be brave. Assuming you've saved the backup of the
+/etc/sysconfig/httpd configuration file, try using another option,
+based on Steps 4 through 8.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 2</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+In this lab, you'll set up public/private key-based authentication
+between two RHEL 6 systems. Any two systems will work for this
+purpose. Just be prepared to use the same two systems in Labs 3, 4,
+and 5. In preparation for this lab, make sure that each system has a
+regular user named hawaii. Use the following passphrase:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">I
+love Linux!</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 3</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+Repeat Lab 2, with two differences. Set up DSA authentication, and
+set up a user named tonga on the client, configured to connect to
+user hawaii's account on the server.</P>
+<H3 CLASS="western" STYLE="margin-top: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</H3>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 4</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+In this lab, you'll set up user-level security on an SSH server. Use
+the same systems configured for Labs 2 and 3. Limit access to the
+user hawaii set up in Lab 2, and then try to access a different
+account on the SSH server. Try access again to the root
+administrative account on the SSH server.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 5</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+In this lab, you'll set up the SSH server configured in earlier labs
+on port 8022. Once complete, reload the service. Try connecting
+locally. Set up the systems so that you can also connect from a
+remote system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 6</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+In this lab, you'll configure the /virtual/web directory with the
+same SELinux file types as the /var/www directory. In addition,
+configure the /virtual/web/cgi-bin directory with the same SELinux
+file types as the /var/www/cgi-bin directory.</P>
+</BODY>
+</HTML>

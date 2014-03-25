@@ -1,0 +1,2 @@
+NETWORKING=no
+HOSTNAME=server1.example.org

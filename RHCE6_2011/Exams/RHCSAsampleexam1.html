@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110506;14340000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;10283100">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>RHCSA Sample Exam
+1</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+Start with the preconfigured RHEL 6 system described in Appendix A.
+If necessary, make sure that system is currently powered down. As
+discussed in Appendix A, a current repository of the installation DVD
+is available from an FTP server configured on the local system.
+You'll have two and a half hours to complete the following tasks:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+1. Make sure SELinux is set in enforcing mode. There will be an
+<B>iptables</B>-based firewall on this system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+2. Install VM software on the local system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+3. Use the ks.cfg file from the Exams/ subdirectory to create a
+virtual machine. Modify as needed to set up a system with hostname
+server2.example.com on IPv4 address 192.168.0.51.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+4. Configure the virtual machine to start automatically the next time
+the local physical host system is booted. 
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+The additional steps in this exam should be applied to the
+server2.example.com system. If you were not successful creating a
+server2.example.com system, it's acceptable to set it up on the local
+physical host system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+5. Configure a logical volume of 500MB in the available empty space
+of the drive, formatted to ext4.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+6. Make sure the volume is encrypted.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+7. Configure that volume on the new /house directory. Make sure that
+it's automatically mounted the next time the system is booted. Use
+the UUID of the new volume.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+8. Configure the following users for RHEL: nancy, randy, donna, and
+mike. Make nancy and randy part of a group named angels. Create a
+/home/angels directory and allow them to share files without having
+to change permissions or ownership on any file they put in this
+directory. Do not give donna or mike read privileges on this
+directory. 
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+9. Make sure user mike's account expires after one week.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+10. Set up a job to delete all of the regular files in the /home/mike
+directory on the second day of every month at 3:50 a.m. 
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+11. Set up Access Control Lists on the /home directory partition. Set
+up a project.test file in user mike's home directory. Configure ACLs
+on a file named project.test to allow user donna to read this file.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+12. Download a different version of the kernel, available from the
+CD, on the Chapter7/ subdirectory installation source. Set up the new
+stanza in the bootloader to boot into runlevel 1.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+13. Set up the root password as RedHat4Ever!</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+14. Install an HTTP server accessible to all systems over the
+network.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+15. Power down the exam system. 
+</P>
+</BODY>
+</HTML>

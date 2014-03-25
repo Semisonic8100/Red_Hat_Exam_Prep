@@ -1,0 +1,66 @@
+﻿LABS
+
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 9. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1
+
+
+As the root user, create cron jobs that change the login message for users at the text console. To do so, you'll want to change the content of /etc/motd. Make sure that people who log in at different times get appropriate messages:
+
+
+If users log in between 7 a.m. and 1 p.m., create the login message "Coffee time!"
+
+
+If users log in between 1 p.m. and 6 p.m., create the login message "Want some ice cream?"
+
+
+If users log in between 6 p.m. and 7 a.m., create the login message "Shouldn't you be doing something else?"
+
+
+Lab 2
+
+
+In this lab, you'll set up an at job as the root administrative user, to save a list of currently installed RPMs in the /root/rpms.txt file. That job will be run once, 24 hours from now. If you want to verify your work, set up a second at job with the same commands to start 5 minutes from now.
+
+
+Lab 3
+
+
+In this lab, you'll set up a VNC server using the tigervnc package. Be aware, if you're running a KVM-based VM on the local system, that VM would actually have to be shut down for a real test of the VNC server. (It's acceptable if that VM was just autostarted, as described in Chapter 2, as long as the Virtual Machine Manager is not running.) 
+Since no remote physical system is assumed, you'll have to test the result with the nmap and telnet commands. Be sure appropriate ports are open from the localhost, along with a remote system. A KVM-based VM is acceptable for that purpose.
+
+
+
+Lab 4
+
+
+In this lab, you'll find the value of several different log files. In preparation, use the wrong password to log in to a regular account. Then take the following steps:
+
+
+1. Navigate to /var/log as the root user. All of the files listed in this lab are in that /var/log directory.
+
+
+2. Explore the contents of the anaconda.* log files.
+
+
+3. Run the utmpdump btmp command. Do you see the login attempt? Can you tell if it succeeded?
+
+
+4. Review the contents of the cron log file. Scroll through it. If your computer has been on for a while, most of what you see will be based on the run-parts /etc/cron.hourly command. Alternatively, if you reboot on occasion, you'll see messages associated with the anacron service.
+
+
+5. Review the contents of the dmesg log file. Compare the beginning of it with the start of the anaconda.syslog file. Which one includes the currently booted kernel?
+
+
+6. Navigate toward the bottom of the dmesg file. Can you identify the amount of swap space? Can you identify one or more partitions with the default EXT4 filesystem?
+
+
+7. Review the maillog log file. If that file is short, there may be an older maillog-* file; if so, review that as well. Do you see any messages associated with mail messages?
+
+
+8. Review the secure log file. Navigate to the bottom of the file. Do you see a message associated with the failed login?
+
+
+9. Finally, review the Xorg.0.log file. Do you see any messages related to the graphical screen in file? How does that work when you didn't configure a GUI during the installation process?

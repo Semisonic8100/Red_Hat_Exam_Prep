@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>(6)LABS</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Mike Jang">
+	<META NAME="CREATED" CONTENT="20110311;15030000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11352700">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		A.western:link { so-language: zxx }
+		A.ctl:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>LABS</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+During the Red Hat exams, the tasks will be presented electronically.
+Therefore, this book presents most of the labs electronically as
+well. For more information, see the Lab Questions section toward the
+end of Chapter 6.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+If you've run the exercises while reading the chapter, it's best to
+use a different virtual machine. If one is not available, the first
+thing you should do is delete any logical volumes, volume groups, and
+physical volumes created during the chapter. To that end, the
+<B>lvremove</B>, <B>vgremove</B>, and <B>pvremove</B> commands should
+prove helpful.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Next, delete the partitions created during the chapter. If you used
+the spare hard drives created for the virtual machines specified in
+Chapter 2, those would be in the /dev/sda and /dev/sdb hard drive
+device files.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 1</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+This lab assumes you have a new hard disk (or at least empty space on
+a current hard drive where you can add a new partition). You can
+simulate a new hard disk by adding appropriate settings to a KVM or
+VMware virtual machine. In this lab, you'll create one new partition
+using <B>parted</B>, format it to the ext4 filesystem, and configure
+it on the /test1 directory in /etc/fstab so that the new partition is
+properly mounted the next time you boot Linux. You'll also create a
+second new partition using <B>fdisk</B>, format it, and configure as
+additional swap space /etc/fstab so that space is also used the next
+time you boot Linux. Oh yes, use the UUIDs in /etc/fstab.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 2</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+In this lab, you'll set up a formatted logical volume, based on
+partitions appropriately configured. If you use the partitions
+created in Lab 1, don't forget to delete or at least comment out any
+associated settings in the /etc/fstab file.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Once you create a VG, don't use it all. For example, if you've set up
+a VG of 1000MB, configure 900 MB as a LV. Mount the resulting logical
+volume on the /test2 directory, and confirm the result with the <B>mount</B>
+and <B>df</B> commands. Name the VG volgroup1 and the LV logvol1.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Set it up on the /test2 directory in the /etc/fstab file, formatted
+to the ext4 filesystem. Use the UUID for the associated logical
+volume device in /etc/fstab.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 3</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+In this lab, you'll continue the work done in Lab 2, expanding the
+space available to the formatted LV closer to the capacity of the VG.
+For example, if you were able to follow the size guidelines in Lab 2,
+use appropriate commands to increase the space available to the LV
+from 900MB to 950MB. Set it up on the /test3 directory in the
+/etc/fstab file, formatted to the ext4 filesystem. Use the UUID for
+the associated logical volume device in /etc/fstab.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Don't forget to delete or at least comment out any settings from
+previous labs in the /etc/fstab file. Just one hint: it's far too
+easy to skip steps during the process.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 4</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+In this lab, you'll set up a filesystem formatted with LUKS
+encryption. It's appropriate to use either the partition created in
+Lab 1 or the logical volume created in Lab 2. In fact, it would be
+helpful to practice creating such encryption in both ways.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Of course, there are risks with any sort of encryption, especially if
+the passphrase is lost. For the purpose of this lab, write down the
+passphrase you choose! There is no requirement to first prepare the
+filesystem with random data. Confirm the result.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 5</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+In this lab, you'll set up the LUKS-encrypted volume set up in Lab 4
+in the /etc/fstab configuration file. Try it with the /dev/mapper
+device file, as well as the associated UUID. Be sure to select the
+correct UUID.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 6</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+In this lab, you'll configure the automounter to automatically read
+an installed CD/DVD. While NFS services are covered in Chapter 17,
+the Red Hat RHCSA prep course does suggest that you need to know how
+to use the automounter to connect to a shared NFS directory. So the
+steps included in this lab are designed to help you set up a simple
+shared NFS directory on one system, with connections allowed from a
+second system. If you've set up the systems described in Chapter 2,
+the first system would be server1.example.com, and the second system
+would be tester1.example.com. If you're using RHEL 6, it assumes that
+you have a connection to the Red Hat Network. If you're using a
+rebuild distribution such as Scientific Linux 6, it assumes you have
+a connection to the standard repositories for that distribution as
+discussed in Chapter 7. You should not need to read that chapter. As
+long as networking is configured and connected to the Internet as
+discussed in Chapter 3, a connection to such repositories is enabled
+by default.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+1. On the first system, back up your current /etc/auto.master and
+/etc/auto.net configuration files.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+2. Install NFS server configuration files with the following command:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+yum install nfs-utils</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+3. If you're working with the baseline virtual system configured in
+Chapter 2, this NFS and related packages should already be installed.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+4. Share the /tmp directory by adding the following line to
+/etc/exports. Be careful; don't include extra spaces:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/tmp
+*(ro</FONT></FONT><FONT FACE="Courier, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+5. Activate the NFS service, and disable any current <B>iptables</B>-based
+firewall with the following commands. (Firewalls are described in
+Chapter 4.)</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+/etc/init.d/nfs restart<BR># iptables -F </FONT></FONT>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+Bonus: it's best if you can use the Firewall Configuration tool or
+<B>iptables</B> commands to support access through a firewall, as it
+is a RHCSA skill.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+6. Record the IP address of the local system, as shown by the
+<B>ifconfig</B> command. If it's the server1.example.com system
+described in Chapter 2, it should be 192.168.122.50; but another IP
+address is OK okay too.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+7. Go to another RHEL 6 system, such as the tester1.example.com
+system described in Chapter 2. The following command should confirm a
+good connection to the remote NFS server; substitute the IP address
+of the remote system for remote_ipaddr.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3># <FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">showmount
+-e remote_ipaddr</FONT></FONT></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0.2in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT SIZE=2 STYLE="font-size: 11pt">8.
+</FONT>Now you can configure the local automounter for both a
+connection to a CD/DVD and a shared NFS directory, using the
+techniques described in the chapter.</FONT></FONT></P>
+</BODY>
+</HTML>

@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Mike Jang">
+	<META NAME="CREATED" CONTENT="20110303;17340000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11425700">
+	<META NAME="Originator" CONTENT="Microsoft Word 14">
+	<META NAME="ProgId" CONTENT="Word.Document">
+	<STYLE TYPE="text/css">
+	<!--
+		P { color: #000000; widows: 2; orphans: 2 }
+		P.western { so-language: en-US }
+		P.cjk { so-language: zh-CN }
+		P.ctl { so-language: ar-SA }
+		A.western:link { so-language: zxx }
+		A.ctl:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>LABS</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">During
+the Red Hat exams, the tasks will be presented electronically.
+Therefore, this book presents most of the labs electronically as
+well. For more information, see the Lab Questions section toward the
+end of Chapter 4.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">The
+Red Hat exams are unique based on their reliance on labs and hands-on
+demonstrations. Be aware, while Labs 1 and 2 cover different topics,
+they are designed to be run consecutively. The same is true for Labs
+5, 6, and 7, which are also designed to be run consecutively.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+1</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab you'll explore the role of permissions and the SUID bit. To
+do so, you'll create a simple script in the /usr/local/bin directory.
+Call it script1.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+In a text editor, open file script1 in the /usr/local/bin directory.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Enter the following lines in that file:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt">#!/bin/bash<BR>/bin/ls
+&gt; filelist</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Save the file.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+Try to execute that script as the root administrative user. What
+happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Set up execute permissions for the user owner of the script1 file
+with the <B>chmod</B> <B>u+x /usr/local/bin/script1</B> command. Can
+you now execute the script as the root administrative user?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+Now set up execute permissions for other users in the script1 file.
+Log in as a regular user. Can you now execute the script as a regular
+user?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">7.
+As it's a big security risk to set SUID permissions on a shell
+script, don't do that on the script1 file. Instead, remove SUID
+permissions on the /usr/bin/passwd executable file with the <B>chmod</B>
+<B>u-s /usr/bin/passwd</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">8.
+Try to run the <B>passwd</B> command as a regular user. What happens?
+Did your password change? Try again. What worked when prompted for
+the current password?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">9.
+Return to the root user account, and restore SUID permissions on the
+/usr/bin/passwd file.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">10.
+Try to run the <B>passwd</B> command again as a regular user. Change
+your password. What happens this time?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+2</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll use the script created in Lab 1. You'll set up
+regular permissions on that script, and then configure ACLs for that
+script to be executed by a regular user. It also assumes that the
+filesystem with the /usr/local/bin directory is the top-level root
+directory, and is not already mounted with ACLs.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Change the permissions on the script1 file created in Lab 1 with the
+<B>chmod</B> <B>644 /usr/local/bin/script1</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Log in as a regular user. Try to execute that script. What happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Remount the top-level root directory (/) with ACLs with the following
+command:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt"># mount -o
+remount,acl /</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">As
+long as the /etc/fstab file is configured in the top-level root
+directory (/), this command should work. To verify, run the <B>mount</B>
+command by itself; it should show output similar to:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt">/dev/vda2
+on / type ext4 (rw,acl)</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+Now you'll be able to set ACLs on the noted script. Configure read
+and execute ACLs for one regular user on the script1 file. Verify
+with the <B>getfacl</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Repeat Step 2, logging in as the regular user given ACL privileges to
+the script1 script. What happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+If you want to restore the original configuration, delete the script1
+file from the /usr/local/bin directory. If your original
+configuration did not include ACLs on the top level root directory,
+you can restore that situation with the following command:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt"># mount -o
+remount /</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+3</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll set ACLs for a regular user for the root
+administrative user's home directory, /root. Start with setting ACLs
+for the directory, and review the results from the regular user's
+account. What files can be read from the /root directory? What else
+do you have to do to set up ACLs on a specific file in the /root
+directory?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Just
+make sure to disable ACLs on the /root directory when the lab is
+complete. ACLs can be a risky business if the account of the subject
+regular user is ever compromised.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+4</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll review the process for disabling and re-enabling
+SELinux on a system. Review the current status of SELinux with the
+<B>sestatus</B> command. You can disable SELinux through the
+/etc/sysconfig/selinux file, or through the SELinux Administration
+tool. Do so and reboot the system. Try the <B>sestatus</B> command
+again. Re-enable SELinux and reboot the system. What happens? Does
+the process take long? How many times does the system reboot? What
+would happen if you had to wait for the relabel and the reboot
+process during a Red Hat exam?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+5</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll set up one regular user in the SELinux guest_u
+category. Remember that the relevant commands start with <B>semanage</B>
+<B>login</B>. Given the options with the __default__ user, there are
+multiple ways to meet the requirements of this lab.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Before
+making any changes, record the current status of SELinux users; one
+method is with the following command, which records the output in the
+selinuxusers file. (Strangely enough, a single forward redirection
+arrow does not record the output from the noted command.)</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt"># semanage
+login -l &gt;&gt; selinuxusers</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Your
+work will continue in Lab 6.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+6</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Now
+with the regular user in the guest_u category, see what you can do.
+Try the following actions:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Try logging into the GUI. What happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Log into a regular console. Try running the <B>startx</B> command.
+What kind of user message do you get?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Back in the console, try the <B>su</B> and <B>sudo</B> commands. What
+happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+Try some of the system-config-* commands. What happens?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+7</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll activate the allow_guest_exec_content SELinux
+boolean. Do so with a command that ensures that the change survives a
+reboot. Once complete, log out as the configured guest user, and log
+back in. Create a script; one simple script is shown here:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt">#!/bin/bash<BR>/bin/df
+&gt; disks</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Make
+sure to make the script executable. If the script runs and the disks
+file is created, then you were successful.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">When
+the process is complete, log in to the GUI as an unconfined user and
+review the SELinux users in the GUI SELinux Administration tool. (For
+this purpose, it's acceptable to log into the GUI with the root
+administrative account.) Use the User Mapping section, and the tools
+available to restore the original configuration as documented in the
+selinuxusers file. Don't forget to deactivate the
+allow_guest_exec_content boolean.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><FONT SIZE=3><B>Lab
+8</B></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll create a new /ftp directory with SELinux contexts
+appropriate for that directory. It should be based on the contexts in
+the /var/ftp/pub directory. Use the knowledge that you gained in this
+chapter to complete this lab. When you are done, restore the original
+contexts on the /ftp directory. How do the SELinux contexts differ?
+From what file did the restored contexts come from? Are the restored
+contexts the same as when the /ftp directory was created?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; widows: 0; orphans: 0"><B>Lab
+9</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">At
+this point, you should have some data available in an audit.log file
+in the /var/log/audit directory. If so, try to read the log file. If
+not, make sure SELinux is set in enforcing (or at least in
+permissive) mode. Make sure the audit service is working with the
+/etc/init.d/auditd restart command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Apply
+the <B>sealert</B> <B>-a</B> command to that file; you may want to
+redirect that output to a text file for easier perusal. Can you
+identify problems in the file? What users have been identified in
+that file? Can you identify problem users and groups by their UID and
+GID numbers? For more information on UIDs and GIDs, see Chapter 8.
+Are there any proposed solutions?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">If
+you don't have a current audit.log file or just need another
+perspective, a sample audit.log file has been included on the
+Chapter4/ directory of the CD. That directory also includes the
+sealert.audit.output file, which is what happens to the file after
+the <B>sealert</B> <B>-a</B> command has been applied to it.</P>
+</BODY>
+</HTML>

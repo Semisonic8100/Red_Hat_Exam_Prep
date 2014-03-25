@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110328;10470000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11523300">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>LABS</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">During the Red Hat exams, the
+tasks will be presented electronically. Therefore, this book presents
+most of the labs electronically as well. For more information, see
+the Lab Questions section toward the end of Chapter 7.</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 1</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">This lab assumes you've completed
+Chapter 1, Lab 2. While it's best to have a working network
+connection to that system, it's certainly possible to set it up on
+the same system as was done in the lab, as long as the associated
+server is operational. In either case, you may need to make sure any
+firewall is not running (or preferably, is properly configured per
+Chapter 4.). Hint: based on Chapter 1, Lab 2, you'll be connecting to
+an FTP Server-based repository on IP address 192.168.122.1.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">You'll create a file.repo file in
+the /etc/yum.repos.d directory. It's okay to use any existing files
+in that directory as a model. Use [inst] as the ID, and install for
+the name of the repository. For reference, the installation files
+created in that lab were copied to the pub/inst/ subdirectory. Make
+sure the local system is actually looking for the repository and is
+using the correct file for verification.</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 2</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll be
+identifying a potential security problem. You've been given a tip by
+security staff that the problem is related to a binary file that
+starts a server.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll use a script
+in the Chapter7/ directory of the CD included with the book. The
+script is called <B>Ch7Lab2</B>. You'll need to copy the script to
+the server1.example.com test system created in Chapter 2. The
+following steps assume the system is on a KVM-based virtual machine.
+If it's on a different virtual machine manager such as VMware or
+Virtualbox, you'll have to consult the documentation for that virtual
+machine manager, at least for instructions on how to connect a CD/DVD
+drive.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">1. Open the KVM Virtual Machine
+Manager from a GUI command line with the <B>virt-manager</B> command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">2. Connect to the <B>localhost
+(QEMU)</B> system.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">3. Double-click the virtual
+machine with the server1.example.com system. In the window that
+appears, click View | Details.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">4. Insert the CD for the book.
+Use the options that appear to connect the CD/DVD drive to the
+virtual machine. Return to the console for the virtual machine by
+clicking View | Console.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">5. Boot the server1.example.com
+system. Mount the book CD with the <B>mount /dev/cdrom /media</B>
+command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">6. Log in to the root
+administrative account.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">7. Make sure you're in the /root
+directory with the <B>cd /root</B> command. Copy the noted script
+(and associated test file) from the CD to the root user's home
+directory with the <B>cp /media/Chapter7/Ch7Lab2 ~</B> command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">8. Make sure the script is
+executable; run the <B>chmod u+x Ch7Lab2</B> command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">9. As the root user, execute the
+script with the <B>./Ch7Lab2</B> command. Now you can start the
+actual work of the lab.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">As suggested earlier, the problem
+relates to a binary file associated with a server. Identify the
+binary file that's been changed and should, therefore, be regarded
+with suspicion. Most Linux servers are started with a binary file in
+the /usr/sbin directory. Address the problem. Uninstall and reinstall
+the associated package. Don't lose any changes made to the
+configuration file. If one or more of the steps required in this lab
+take time, use that time to start work on Lab 3.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><B>Lab 3</B></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">This lab may not be possible
+unless updates are available from the RHN (or if you're using a
+rebuild of RHEL 6, a remote repository with updates, configured in
+files in the /etc/yum.repos.d directory). In this lab, you'll examine
+what happens when you run an update to upgrade to newer versions of
+packages available for new features, to address security issues, and
+more. Before you start, run the following command to clear the cache
+to enable the full set of messages:</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+yum clean all</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Run the following command to send
+the messages to a text file:</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+yum update &gt; update.txt</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">If a lot of updates are
+available, this process may take some time. If you want to watch, run
+the following command in a different command line console.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+tail -f update.txt</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">If you want to download and
+install the updates, use the <B>-y</B> switch, which answers &quot;yes&quot;
+to all prompts. The complete command becomes</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+yum update -y &gt; update.txt</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">After the download and
+installation is complete, review the update.txt file. Note the first
+messages, how plug-ins are installed from the /etc/yum/pluginconf.d/
+directory. Note how it loads information from the repositories,
+downloads headers, and resolves dependencies.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Once dependencies are resolved,
+examine where the downloads come from. Note how some packages are
+installed and how others are updated.</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 4</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll create a job
+that ensures security updates are automatically installed on the
+local system, on an hourly basis. You'll need to log in as a regular
+user for this purpose, to ensure configuration settings are saved to
+an appropriate directory. While it's possible to set up such a job
+using the cron daemon, that's a topic for Chapter 9.</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 5</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll examine what
+happens when you update a kernel RPM by installing it side by side
+with an existing kernel. If a newer kernel is not available, use an
+older kernel available on the book CD, in the Chapter 7/
+subdirectory. Two kernels are available for this purpose in that
+directory, both for 64-bit systems:</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">kernel-2.6.32-71.el6.x86_64.rpm<BR>kernel-2.6.32-71.14.1.el6.x86_64.rpm</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">The associated kernel-firmware
+package is also included in the Chapter7/ directory, as it is a
+dependency of the kernel. Just remember, if you don't want the kernel
+that you install during this lab, make sure to remove the package
+properly after the lab is complete.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">1. Make a copy of the existing
+GRUB configuration file, /boot/grub/grub.conf. Print it out or copy
+it to your home directory.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">2. Make a copy of the current
+file list in the /boot directory. One method uses the <B>ls /boot &gt;
+bootlist</B> command, which writes the file list to the bootlist
+file.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">3. If a newer kernel is
+available, and you're connected to the RHN or another appropriate
+repository, run the following command:</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+yum install kernel</FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">Another alternative is to
+download and install the RPM with the <B>yumdownloader</B> command.
+Just be sure to use the <B>rpm -i</B> switch to install the new
+kernel; otherwise, the command overwrites the existing kernel. (If
+you're installing an older kernel, you'll have to add the <B>--force</B>
+switch.) Two older kernels are available for this purpose on the CD,
+in the Chapter 7 subdirectory.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%"><A NAME="Instant1"></A>
+<FONT FACE="Times New Roman, serif">4. Check the results in the GRUB
+configuration file, /boot/grub/grub.conf. Observe the differences
+versus the old GRUB configuration file, which you saved in Step 1.
+What is the default kernel? If you happened to install an older
+kernel, is the default what you expected?</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">5. Check the results in the /boot
+directory. Observe the differences with the original list of files in
+the /boot directory. Test the result with a reboot.</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Lab 6</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif">In this lab, you'll use both the
+<B>yum</B> command and the Add/Remove Software tool to install
+packages from the Remote Desktop Clients package group. At this
+point, multiple virtual machines should be available. Be sure to
+install all packages from the Remote Desktop Clients package group on
+both the server1.example.com and tester1.example.com systems. On one
+system, use the Add/Remove Software tool. On the second system, use
+the <B>yum</B> command.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3>The Remote Desktop
+Clients package group can be found in the Desktop category in the
+Add/Remove Software tool. You could also use a certain </FONT><FONT SIZE=3><B>yum</B></FONT>
+<FONT SIZE=3>command for that purpose. </FONT>Make sure every package
+named in the group is installed on both systems.</FONT></P>
+</BODY>
+</HTML>

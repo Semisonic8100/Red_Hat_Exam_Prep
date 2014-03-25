@@ -1,0 +1,230 @@
+Chapter 8 - User Administration
+
+useradd
+usermod
+groupadd
+groupmod
+chage
+
+vipw
+vigr
+
+
+LDAP - Lightweight Directory Access Protocol
+
+/etc/passwd 
+========================================
+USERNAME,PASSWORD (x),USER ID (UID),GROUP ID (GID),USER INFO,HOME DIR,LOGIN SHELL
+========================================
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+nagios:x:498:500:nagios:/var/log/nagios:/bin/sh
+tcpdump:x:72:72::/:/sbin/nologin
+
+Note: Normal UIDs start at 500.
+
+/etc/group
+========================================
+GROUPNAME,PASSWORD (x),GID,GROUP MEMBERS
+========================================
+root:x:0:root
+bin:x:1:root,bin,daemon
+daemon:x:2:root,bin,daemon
+wheel:x:10:root
+ftp:x:50:
+ntp:x:38:
+sshd:x:74:
+nagios:x:500:
+tcpdump:x:72:
+
+/etc/shadow
+========================================
+USERNAME,ENCRYPTED PASSWORD,PASSWORD HISTORY,MIN DAYS,MAX DAYS,WARN DAYS,INACTIVE,DISABLESD
+========================================
+Note: Encrypted password requires an "x" in the second column of /etc/password
+Note: Password history lists date of lass password change, in days, counting forward from Jan 1st 1970.
+
+root:$6$HTDNCz10$FSr9KL0rE8JBxFnzXG.L9Cgn/mkSObTKLwKJP3KpZaZncrcw6YFnR9ShzxGIPibHcdw7T5uuWOhPx.TfzqUoZ/:15774:0:99999:7:::
+bin:*:15240:0:99999:7:::
+ftp:*:15240:0:99999:7:::
+nobody:*:15240:0:99999:7:::
+ntp:!!:15764::::::
+sshd:!!:15764::::::
+nagios:!!:15764::::::
+tcpdump:!!:15764::::::
+
+In the ENCRYPTED PASSWORD column, if starts with: 	
+	$1 = hashed to Message Digest 5 (MD5) algorithm
+	$6 = 512-bit Secure Hash Algorithm (SHA-512).  Standard for RHEL 6. 
+	
+/etc/gshadow
+========================================
+GROUPNAME,PASSWORD,GID,GROUP MEMBERS
+========================================
+root:::root
+bin:::root,bin,daemon
+wheel:::root
+ftp:::
+nobody:::
+users:::
+sshd:!::
+nagios:!::
+tcpdump:!::
+
+! in PASSWORD indicates "no password".
+
+
+/etc/login.defs
+========================================
+Provides the baseline for parameters in the shadow password suite.
+========================================
+MAIL_DIR - Specifies directory for locally delivered email.  Usually /var/spool/mail
+PASS_MAX_DAYS - 
+PASS_MIN_DAYS - 
+PASS_WARN_AGE - Users are warned this # of days before PASS_MAX_DAYS.
+
+UID_MIN 500 - Specifies the minimum UID.  In this case, 500.
+UID_MAX 60000 - In this case, 60000.  Leaves higher numbers available for LDAP and AD.
+GID_MIN 500 -
+GID_MAX 60000 - 
+
+CREATE_HOME yes - Switch to automatically add home directories for new users when "useradd" is run.
+UMASK	077 - 
+USERGROUPS_ENAB yes - Adds/deletes associated groups when users are created/deleted.
+ENCRYPT_METHOD SHA512 - Determines algorithm used to encrypt passwords.  SHA 512 is standard for RHEL 6.
+
+
+Adding Users Directly
+========================================
+vipw - Opens /etc/passwd file in text editor.  
+
+After adding users directly, you must do the following:
+* Add user home directory, and make sure user/group donna have ownership
+* Populate the user home direcoty.  Default option is to copy over from /etc/skel.  And make sure user/group donna have ownership of those files.
+
+Add Users to Group Directly
+========================================
+vigr / vigr -s - Shortcuts to edit /etc/group and /etc/gshadow directly.
+
+Ex - To create a group named "project", use GID beyond GID_MAX (60000)
+project:x:60001:joe,angie,bob
+
+
+Add or Delete Users at the Command Line
+========================================
+useradd joe - Creates user/group "joe", /home/joe, populates it with standard files from /etc/skel, assigns permissions and the default shell.
+
+Flags
+-u UID - Overrides default UID
+-g GUID - Overrides default GID.  Must be 100 (users) or already exist if you assign GID.
+-c info - Adds comment "info" to /etc/passwd.  Useful for full names and random info.
+-d dir - Overrides the default home directory.
+-e 2013-04-05 - Sets an expiration date for the user account.  In this case, April 5th 2013.
+-f 21 - # of days after password expires that account is disabled.  In this case, 21.
+-G group1,group2 - Makes the user a member of group1 and group2, based on current names in /etc/group.  Note: A space between groups leads to an error.
+-s shell - Overrides the default shell for the user, /bin/bash.
+
+userdel joe - Deletes user/group "joe", but leaves home directory intact.
+userdel -r joe - Deletes user, group, and home directory.
+
+Add or Delete a Group at the Command Line
+========================================
+groupadd -g 60001 project - Creates a group "project" and overrides the default GID to assign a GID of 60001
+Note: You usually want to run groupadd with the -g flag and set a GID above the GID_MAX value found in /etc/login.defs
+
+groupdel project - Deletes group "project".
+
+
+Add a User with Red Hat User Manager
+========================================
+system-config-users
+
+
+More User and Group Management Commands
+========================================
+
+usermod - modifies various settings in /etc/passwd and allows you to set an expiration date for an account or group.
+
+Ex
+usermod -e 2013-04-15 joe - Sets account joe to expire on April 15th, 2013.
+usermod -G project joe - Makes user "joe" a member of group "project".
+
+groupmod -g 60002 project - Changes the GID of group "project" to 60002.
+groupmod projectile project - Changes the name of group "project" to "projectile".
+
+chage - primarily used to manage aging information for a password.
+
+-d YYYY-MM-DD - Set the last change date for the password.  Output is shown in /etc/shadow as the number of days after Jan 1, 1970.
+-E YYYY-MM-DD - Assigns the expiration date for an account.  ""
+-I 21 - Locks an account # days after password expires.  In this case, 21 days.
+-l - Lists all aging information. 
+-m 21 - Sets a minimum # days a user must keep a password.  In this case, 21 days.
+-M 21 - Sets a maximum # of days that a user is allowed to keep a password.  In this case, 21 days.
+-W 21 - Warns the user # days before password must be changed.  ""
+
+
+8.02 Administrative Control
+========================================
+su - temporarily logs in with root permissions.
+* su - - navigates to the root users root directory, /root
+* su - angie - Log in as "angie" and navigates to /home/angie directory.
+* su -c - used to assume administrative privileges for one command.
+
+Limiting Access to su
+========================================
+/etc/pam.d/su
+auth required pam_wheel.so use_uid - Makes it so that only members of group "wheel" are allowed to use su command.
+
+
+sg - Can execute a command with the rights associated with a given group.  Assumes you've set up a group password (gpasswd *groupname*).
+sg project -c - Allows you to access files and directories owned by group "project".
+
+sudo /etc/sudoers
+
+/etc/securetty - Regulates local access.  By default, contains access directives for 12 virtual consoles.  Determines consoles where the root administrator is allowed to log in (manually, not by ssh).
+/etc/init/start-ttys.conf - 
+
+/etc/security/access.conf - Regulates access by all users.
+
+Ex
++ : root : 192.168.201. - Adds root access from IP 192.168.201.
+- : root : ALL - Would then disallow root access from all other IP ranges.
+- : ALL : ALL - Denies access to all users from all local or remote systems.
+
+
+Custom Administrators with the sudo Command
+========================================
+sudo - 
+visudo - Shortcut to open /etc/sudoers in the vi editor.
+
+/etc/sudoers
+(go back to 486-487 to finish this)
+
+
+8.03 User and Shell Configuration
+========================================
+ls -a /home/joe - List all files, including hidden ones, in /home/joe.
+
+/etc/skel - contains default environment files for new accounts. 
+- /etc/bashrc - used for aliases and functions on a system-wide basis.
+- /etc/profile - used for system-wide environments and startup files.  Exports PATH, USER, LOGNAME, MAIL, HOSTNAME, HISTSIZE, and HISTCONTROL variables and runs scripts in /etc/profile.d directory.
+- /etc/profile.d - contains scripts to be executed by /etc/profile
+
+Ex
+echo $HOSTNAME
+echo $MAIL
+
+8.04 Users and Network Authentication
+========================================
+
+
+LDAP configs
+/etc/pam_ldap.conf
+
+/etc/openldap/ldap.conf

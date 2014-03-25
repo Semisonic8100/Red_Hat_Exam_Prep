@@ -1,0 +1,38 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 17. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1: Caching-only DNS Server
+
+In this lab, you'll set up a caching DNS nameserver on a local network. There should be a firewall configured on the DNS system.
+
+
+Lab 2: Caching and Forwarding DNS Server
+
+In this lab, you'll set up a caching DNS server that also forwards requests to one specific alternative DNS server. That second DNS server can be a home network router, a DNS server assigned by an ISP, a DNS server for a corporate network, or for test purposes, a DNS server in the /var/named/named.ca file. Before activating the service, make sure to clear the current cache. In addition, there should be a firewall configured on the DNS system, limiting access to the local network.
+
+
+Lab 3: Create a System Utilization Report
+
+In this lab, you'll set up a system utilization report for a single day, written to a sysstat_report.txt file. Report parameters can be limited to memory and network statistics.
+
+
+Lab 4: Create a Detailed System Utilization Report
+
+In this lab, you'll set up a system utilization report for a single day, written to a morestat_report.txt file. Report parameters should include information on CPU usage, RAM statistics, disk usage, and network data. The report should be presented in a more visible format, something easily usable by the awk command utility.
+
+
+Lab 5: Configure a System Logging Server
+
+This is effectively a two-part lab, combined with Lab 6. In this lab, you'll set up one system on a local network, ready to receive data over port 514 from remote logging clients. There should be a firewall configured on the logging server.
+
+
+Lab 6: Configure a System Logging Client
+
+This is effectively a two-part lab, combined with Lab 5. In this lab, you'll set up one system on a local network, ready to send all logging data over port 514 to the remote logging server configured in Lab 5.
+
+
+Lab 7: Configure a NTP Server
+
+In this lab, you'll create one NTP server as a peer to a second regular NTP server.

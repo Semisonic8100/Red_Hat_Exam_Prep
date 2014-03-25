@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11392000">
+	<META NAME="Originator" CONTENT="Microsoft Word 14">
+	<META NAME="ProgId" CONTENT="Word.Document">
+	<STYLE TYPE="text/css">
+	<!--
+		P { color: #000000 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P STYLE="margin-bottom: 0in"><B>LABS</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">During the Red Hat
+exams, the tasks will be presented electronically. Therefore, this
+book presents most of the labs electronically as well. For more
+information, see the Lab Questions section toward the end of Chapter
+5.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">For Labs 5 and 7,
+you'll need to execute scripts from the Chapter5/ directory of the CD
+included with the book. For example, the script for the fifth lab is
+called <B>Ch5Lab5</B>. In all cases, you'll need to copy the script
+to the server1.example.com test system. The following steps assume
+the system is on a KVM-based virtual machine. If it's on a different
+virtual machine manager such as VMware or Virtualbox, you'll have to
+consult the documentation for that virtual machine manager, at least
+for instructions on how to connect a CD/DVD drive. But remember, only
+KVM is a virtualization technology found on RHEL 6. Don't look at the
+contents of the copied scripts or files, or the files in the
+/root/backup directory, until the lab is complete. The following are
+steps common to those first four labs.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">1. Open the KVM
+Virtual Machine Manager from a GUI command line with the <B>virt-manager</B>
+command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">2. Connect to the
+<B>localhost (QEMU)</B> system.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">3. Double-click the
+virtual machine with the server1.example.com system. In the window
+that appears, click View | Details.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">4. Insert the CD for
+the book. Use the options that appear to connect the CD/DVD drive to
+the virtual machine. Return to the console for the virtual machine by
+clicking View | Console.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">5. Boot the
+server1.example.com system. Mount the book CD with the <B>mount
+/dev/cdrom /media</B> command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">6. Log in to the
+root administrative account.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">7. Make sure you're
+in the /root directory with the <B>cd /root</B> command. Copy the
+noted scripts (and associated test files) from the CD to the root
+user's home directory with the <B>cp /media/Chapter5/Ch5Lab* ~</B>
+command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">8. These labs should
+work even if the /root/backup directory exists, though you'll see an
+error message if it does.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">9. Make sure the
+scripts are executable; run the <B>chmod +x Ch5Lab?</B> command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 1</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">This lab is focused
+on runlevels and the boot process. You'll boot a system into runlevel
+1, with a full display of all boot messages. You'll then set up the
+system to boot into runlevel 2 by default.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">1. On what part of
+the boot hard drive is the first stage of the GRUB bootloader
+typically located?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">2. Power- up the
+local system. During the boot process, when you see the following
+message (the operating system name and version number may vary),
+press a key.</P>
+<P STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt">Booting Red
+Hat Enterprise Linux Server (2.6.32-71.el6.x86_64) in 5 seconds....</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">3. Edit the default
+option. If the GRUB bootloader is already password-protected, press P
+and enter the password.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">4. Press A to edit
+the <B>kernel</B> command line.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">5. What do you need
+to change and add to that command line to boot the system into
+runlevel 3 with all boot messages displayed?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">6. Make required
+changes, and proceed with booting into runlevel 3.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">7. Once the system
+is booted, what command verifies the current runlevel?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">8. Open the
+/etc/inittab configuration file. What's the current default runlevel?
+Make a note of that number.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">9. Edit the
+/etc/inittab configuration file so that the system boots normally
+into runlevel 2.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">10. Reboot the
+system. How do you confirm that the changes worked?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">11. Edit the
+/etc/inittab configuration file. Restore the original default
+runlevel.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 2</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">This lab is focused
+on one thing you can do when booting into runlevel 1, also known as
+single-user mode. As suggested by a now-superseded version of the
+RHCSA objectives, in this lab you'll change the root administrative
+password. But here's a twist: assume that you don't know the current
+version of that password. What do you do?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 3</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">In this lab, you'll
+add one layer of security to the local system, by adding an encrypted
+password to the GRUB menu.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><B>Lab 4</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">In this lab, you'll
+set up a second stanza in the GRUB configuration file. Before getting
+started, it's best to back up the file. For example, the following
+command backs up the file to the root user's home directory (/root):</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><B># cp
+/boot/grub/grub.conf ~</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">In the second
+stanza, you'll set up a system that boots into runlevel 1, with boot
+messages shown on the screen. Make sure to label that stanza
+appropriately, so the option Single User Mode appears in the GRUB
+menu. To prove the result, reboot the system, check the menu, and
+boot into the Single User Mode option.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">Password-protect
+that stanza using the techniques described in Lab 3. Reboot the
+system. If successful, when you select the Single User Mode option,
+the GRUB menu should prompt for the password that was just created.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 5</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">Be careful with this
+lab. The steps may render this system unbootable, unless you
+understand the skills described in this chapter. There's always the
+risk that key configuration files will not be properly backed up,
+which means there's a risk of losing all data on the system. If you
+understand these risks, proceed with this lab.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">This lab is based on
+the Ch5Lab5 script described earlier. If you followed the
+instructions at the beginning of this section, the script should be
+available in your /root directory. Navigate to that directory and
+take the following steps:</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">1. Log into the root
+account. If you're not already there, navigate to the /root
+directory. Execute the script for this lab with the <B>./Ch5Lab5</B>
+command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">2. Reboot the
+system.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">3. When you see the
+<B>grub&gt;</B> prompt, use the skills described in this chapter to
+identify the drive and partition with the /boot directory. Hint: the
+stage1 file will still exist in that directory.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">4. Where applicable,
+take advantage of the command completion features at the grub&gt;
+prompt. That's especially useful with the <B>kernel /</B> and <B>initrd
+/</B> commands.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">5. Don't forget, the
+kernel is first booted in read-only mode, as specified by the <B>ro</B>
+option.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">6. Remember that the
+top-level root directory is specified by the <B>root</B> directive
+with the <B>kernel</B> command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">7. You don't have to
+remember the UUID associated with the top-level root directory; in
+fact, it would be remarkable if you did. Just use the partition or
+volume device file such as /dev/vda1. (Hint: in the default
+installation created in Chapter 1, the partition device file
+associated with the top-level root directory is not /dev/vda1.)</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">8. After entering
+the location of the Initial RAM disk, run the <B>boot</B> command at
+the <B>grub&gt;</B> prompt.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">9. If your efforts
+are successful, the system will boot normally. In the answer section,
+you'll see how to restore the backed-up GRUB configuration file.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">10. If your efforts
+are not successful, boot the system from the installation DVD or the
+network boot CD and select Rescue Installed System as described in
+the main body of the Chapter.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 6</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">This lab is focused
+on active terminals. Normally, Linux includes six active terminals.
+If a GUI is installed and active with a graphical display manager,
+that system is run in place of the first active terminal. To review,
+you can switch between active terminals with the ALT key and the
+function key associated with a terminal number, such as ALT-F1. If in
+the GUI, you'll need to add the CTRL key to the combination.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">1. Back up the
+current versions of the /etc/sysconfig/init and
+/etc/init/start-ttys.conf configuration files. A logical location is
+the current user's home directory. If you make a serious mistake,
+you'll be able to restore the system from the backup. In the worst
+case, you'll be able to restore these files from backup by booting
+into single-user mode, as described in Lab 1 and in the body of the
+chapter.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">2. Now limit the
+active consoles to terminals 1 and 2.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">3. If successful,
+you'll be able to access only those two terminals on the local
+system. Can you restore the original configuration?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%; page-break-after: avoid">
+<B>Lab 7</B></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">While there's no
+longer a separate troubleshooting section on the RHCSA or RHCE exams,
+troubleshooting skills are still useful on the exam&mdash;and on the
+job. So this lab will help you set up a troubleshooting scenario.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">This lab is based on
+the Ch5Lab7 script, similar to the Ch5Lab5 script described earlier.
+If you followed the instructions at the beginning of this section,
+the script should be available in your /root directory. Navigate to
+that directory and take the following steps:</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">1. Log into the root
+account. If you're not already there, navigate to the /root
+directory. Execute the script for this lab with the <B>./Ch5Lab7</B>
+command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">2. Deactivate the
+current network device. If it's eth0, run the <B>ifdown eth0 down</B>
+command. Substitute for eth0 as needed. (The device may be some other
+file like eth1 or System_eth0, as shown in the output to the <B>ifconfig
+-a</B> command.)</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">3. Restart
+networking with the <B>/etc/init.d/network restart</B> command. What
+happens? Do you have a network connection?</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">4. If you don't see
+the problem right away, go through the different configuration files
+discussed in the chapter. You may need to make a couple of changes to
+a configuration file.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">5. When you've
+identified and fixed the problem in the appropriate configuration
+file, you'll be able to run the <B>/etc/init.d/network restart</B>
+command and see successful messages. If a &ldquo;Device not managed
+by NetworkManager&rdquo; message appears, you may also need to run
+the <B>ifup eth0</B> command.</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">6. If you still have
+problems, look at the file in the /root/backup directory. To restore
+the system, copy that file to the /etc/sysconfig directory.</P>
+</BODY>
+</HTML>

@@ -1,0 +1,4 @@
+#!/bin/bash
+/bin/mkdir /root/backup
+/bin/cp /etc/sysconfig/network /root/backup
+cp -f /root/Ch5Lab7testfile /etc/sysconfig/network

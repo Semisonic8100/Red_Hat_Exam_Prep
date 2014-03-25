@@ -1,0 +1,96 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 7.
+
+
+Lab 1
+
+This lab assumes you've completed Chapter 1, Lab 2. While it's best to have a working network connection to that system, it's certainly possible to set it up on the same system as was done in the lab, as long as the associated server is operational. In either case, you may need to make sure any firewall is not running (or preferably, is properly configured per Chapter 4.). Hint: based on Chapter 1, Lab 2, you'll be connecting to an FTP Server-based repository on IP address 192.168.122.1.
+
+You'll create a file.repo file in the /etc/yum.repos.d directory. It's okay to use any existing files in that directory as a model. Use [inst] as the ID, and install for the name of the repository. For reference, the installation files created in that lab were copied to the pub/inst/ subdirectory. Make sure the local system is actually looking for the repository and is using the correct file for verification.
+
+
+Lab 2
+
+In this lab, you'll be identifying a potential security problem. You've been given a tip by security staff that the problem is related to a binary file that starts a server.
+
+In this lab, you'll use a script in the Chapter7/ directory of the CD included with the book. The script is called Ch7Lab2. You'll need to copy the script to the server1.example.com test system created in Chapter 2. The following steps assume the system is on a KVM-based virtual machine. If it's on a different virtual machine manager such as VMware or Virtualbox, you'll have to consult the documentation for that virtual machine manager, at least for instructions on how to connect a CD/DVD drive.
+
+1. Open the KVM Virtual Machine Manager from a GUI command line with the virt-manager command.
+
+2. Connect to the localhost (QEMU) system.
+
+3. Double-click the virtual machine with the server1.example.com system. In the window that appears, click View | Details.
+
+4. Insert the CD for the book. Use the options that appear to connect the CD/DVD drive to the virtual machine. Return to the console for the virtual machine by clicking View | Console.
+
+5. Boot the server1.example.com system. Mount the book CD with the mount /dev/cdrom /media command.
+
+6. Log in to the root administrative account.
+
+7. Make sure you're in the /root directory with the cd /root command. Copy the noted script (and associated test file) from the CD to the root user's home directory with the cp /media/Chapter7/Ch7Lab2 ~ command.
+
+8. Make sure the script is executable; run the chmod u+x Ch7Lab2 command.
+
+9. As the root user, execute the script with the ./Ch7Lab2 command. Now you can start the actual work of the lab.
+
+As suggested earlier, the problem relates to a binary file associated with a server. Identify the binary file that's been changed and should, therefore, be regarded with suspicion. Most Linux servers are started with a binary file in the /usr/sbin directory. Address the problem. Uninstall and reinstall the associated package. Don't lose any changes made to the configuration file. If one or more of the steps required in this lab take time, use that time to start work on Lab 3.
+
+
+Lab 3
+
+This lab may not be possible unless updates are available from the RHN (or if you're using a rebuild of RHEL 6, a remote repository with updates, configured in files in the /etc/yum.repos.d directory). In this lab, you’ll examine what happens when you run an update to upgrade to newer versions of packages available for new features, to address security issues, and more. Before you start, run the following command to clear the cache, to enable the full set of messages:
+
+# yum clean all
+
+Run the following command to send the messages to a text file:
+
+# yum update > update.txt
+
+If a lot of updates are available, this process may take some time. If you want to watch, run the following command in a different command line console.
+
+# tail -f update.txt
+
+If you want to download and install the updates, use the -y switch, which answers "yes" to all prompts. The complete command becomes
+
+# yum update -y > update.txt
+
+After the download and installation is complete, review the update.txt file. Note the first messages, how plug-ins are installed from the /etc/yum/pluginconf.d/ directory. Note how it loads information from the repositories, downloads headers, and resolves dependencies.
+
+Once dependencies are resolved, examine where the downloads come from. Note how some packages are installed and how others are updated.
+
+
+Lab 4
+
+In this lab, you'll create a job that ensures security updates are automatically installed on the local system, on an hourly basis. You'll need to log in as a regular user for this purpose, to ensure configuration settings are saved to an appropriate directory. While it's possible to set up such a job using the cron daemon, that's a topic for Chapter 9.
+
+
+Lab 5
+
+In this lab, you'll examine what happens when you update a kernel RPM by installing it side by side with an existing kernel. If a newer kernel is not available, use an older kernel available on the book CD, in the Chapter 7/ subdirectory. Two kernels are available for this purpose in that directory, both for 64-bit systems:
+
+kernel-2.6.32-71.el6.x86_64.rpm
+kernel-2.6.32-71.14.1.el6.x86_64.rpm
+
+The associated kernel-firmware package is also included in the Chapter7/ directory, as it is a dependency of the kernel. Just remember, if you don't want the kernel that you install during this lab, make sure to remove the package properly after the lab is complete.
+
+1. Make a copy of the existing GRUB configuration file, /boot/grub/grub.conf. Print it out or copy it to your home directory.
+
+2. Make a copy of the current file list in the /boot directory. One method uses the ls /boot > bootlist command, which writes the file list to the bootlist file.
+
+3. If a newer kernel is available, and you're connected to the RHN or another appropriate repository, run the following command:
+
+# yum install kernel
+
+Another alternative is to download and install the RPM with the yumdownloader command. Just be sure to use the rpm -i switch to install the new kernel; otherwise, the command overwrites the existing kernel. (If you're installing an older kernel, you'll have to add the --force switch.) Two older kernels are available for this purpose on the CD, in the Chapter 7 subdirectory.
+
+4. Check the results in the GRUB configuration file, /boot/grub/grub.conf. Observe the differences versus the old GRUB configuration file, which you saved in Step 1. What is the default kernel? If you happened to install an older kernel, is the default what you expected?
+
+5. Check the results in the /boot directory. Observe the differences with the original list of files in the /boot directory. Test the result with a reboot.
+
+
+Lab 6
+
+In this lab, you'll use both the yum command and the Add/Remove Software tool to install packages from the Remote Desktop Clients package group. At this point, multiple virtual machines should be available. Be sure to install all packages from the Remote Desktop Clients package group on both the server1.example.com and tester1.example.com systems. On one system, use the Add/Remove Software tool. On the second system, use the yum command.
+
+The Remote Desktop Clients package group can be found in the Desktop category in the Add/Remove Software tool. You could also use a certain yum command for that purpose. Make sure every package named in the group is installed on both systems.

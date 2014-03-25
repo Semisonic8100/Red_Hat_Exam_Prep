@@ -1,0 +1,8 @@
+#!/bin/bash
+/bin/mkdir /root/backup 2> /dev/null
+/bin/cp /etc/sysconfig/network-scripts/ifcfg-*eth0 /root/backup
+/usr/bin/chattr +i /root/backup/ifcfg-*eth0
+/bin/sed 's/IPADDR=192.168.122/IPADDR=192.168.12/' /etc/sysconfig/network-scripts/ifcfg-eth0 > ifcfg-eth0
+/bin/rm -f /etc/sysconfig/network-scripts/ifcfg-*eth0
+/bin/cp ifcfg-eth0 /etc/sysconfig/network-scripts/
+/etc/init.d/network restart > /dev/null

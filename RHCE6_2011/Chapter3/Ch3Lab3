@@ -1,0 +1,4 @@
+#!/bin/bash
+/sbin/ifconfig eth0 down 2> /dev/null
+/sbin/ifconfig System_eth0 down 2> /dev/null
+/etc/init.d/network restart > /dev/null

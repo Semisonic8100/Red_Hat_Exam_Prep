@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Mike Jang">
+	<META NAME="CREATED" CONTENT="20110303;11130000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11464500">
+	<META NAME="Originator" CONTENT="Microsoft Word 14">
+	<META NAME="ProgId" CONTENT="Word.Document">
+	<STYLE TYPE="text/css">
+	<!--
+		P { color: #000000; widows: 2; orphans: 2 }
+		P.western { so-language: en-US }
+		P.ctl { so-language: ar-SA }
+		A.western:link { so-language: zxx }
+		A.ctl:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>LABS</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">During
+the Red Hat exams, the tasks will be presented electronically.
+Therefore, this book presents most of the labs electronically as
+well. For more information, see the Lab Questions section towards the
+end of Chapter 3.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">While
+there's no longer a separate troubleshooting section on the
+RHCSA/RHCE exams, troubleshooting skills are still useful on hands-on
+exams&mdash;and on the job. So the first four lab will help you set
+up a troubleshooting scenario. Standard warning: these labs, even
+when properly executed, can render a system unusable. So do not run
+these labs on a system where you need the data. Worst case, you
+should be prepared to reinstall RHEL 6 on that system.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">For
+the first four labs, you'll need to execute scripts from the
+Chapter3/ directory of the CD included with the book. For example,
+the script for the first lab is called <B>Ch3Lab1</B>. In all cases,
+you'll need to copy the script to the server1.example.com test
+system. The following steps assume the system is on a KVM-based
+virtual machine. If it's on a different virtual machine manager such
+as VMware or Virtualbox, you'll have to consult the documentation for
+that virtual machine manager, at least for instructions on how to
+connect a CD/DVD drive. But remember, only KVM is a virtualization
+technology found on RHEL 6. Don't look at the contents of the copied
+scripts or files, or the files in the /root/backup directory, until
+the lab is complete. The following are steps common to those first
+four labs.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Open the KVM Virtual Machine Manager from a GUI command line with the
+<B>virt-manager</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Connect to the <B>localhost</B> <B>(QEMU)</B> system.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Double-click on the virtual machine with the server1.example.com
+system. In the window that appears, click View | Details.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+Insert the CD for the book. Use the options that appear to connect
+the CD/DVD drive to the virtual machine. Return to the console for
+the virtual machine by clicking View | Console.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Boot the server1.example.com system. Mount the book CD with the <B>mount
+/dev/cdrom /media</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+Log in to the root administrative account.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">7.
+Make sure you're in the /root directory with the <B>cd /root</B>
+command. Copy the noted scripts (and associated test files) from the
+CD to the root user's home directory with the <B>cp</B>
+<B>/media/Chapter3/Ch3Lab* ~</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">8.
+These labs should work even if the /root/backup directory exists,
+though you'll see an error message if it does.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">9.
+Make sure the scripts are executable; run the <B>chmod</B> <B>+x
+Ch3Lab?</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 1</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">This
+lab is based on the Ch3Lab1 script, available in the Chapter3/
+subdirectory, as described earlier. If you followed the instructions
+at the beginning of this section, the script should be available in
+the /root directory. Navigate to that directory and take the
+following steps:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Execute the script for this lab with the <B>./Ch3Lab1</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Deactivate the current network device. If it's eth0, run the <B>ifdown</B>
+<B>eth0 down</B> command. If uncertain, run the <B>ifconfig</B>
+command; substitute for eth0 as needed.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Restart networking with the <B>/etc/init.d/network restart</B>
+command. What happens? Can you connect? Start looking through network
+configuration files until you can identify and repair the problem.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+If you don't see the problem right away, go through the different
+configuration files discussed in the chapter. You may need to make a
+couple of changes to a configuration file.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Once you've identified and fixed the problem in the appropriate
+configuration file, you'll be ready to run the <B>/etc/init.d/network
+restart</B> command and see successful messages.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+Make sure the system configuration works after a restart of the
+/etc/init.d/network script, as well as a system reboot.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">7.
+If you still have problems, look at the file in the /root/backup
+directory. If you're not sure which file has been changed, run the <B>ls</B>
+<B>-ltr</B> command. It'll be the last file listed in the output.
+Even if you don't have problems, look at the file in that directory.
+You may have forgotten something.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 2</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%"><A NAME="Instant1"></A>
+This lab is based on the Ch3Lab2 script, available in the Chapter3/
+subdirectory, as described earlier. If you followed the instructions
+at the beginning of this section, the script should be available in
+the /root directory. Navigate to that directory and take the
+following steps:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Execute the script associated with this lab with the <B>./Ch3Lab2</B>
+command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Test connections to local and remote systems, such as the hostname or
+FQDN for the local system and the IP address of the nameserver in the
+/etc/resolv.conf file. Try the <B>ping</B> command as appropriate.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Review applicable network configuration files. Run the <B>ifconfig</B>
+command. Review the information given for consistency. Can you
+identify the problem yet?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+If you can't yet identify the problem, open the Network Manager
+Network Connections tool. Review the wired Ethernet connections. If
+you see the inconsistency, address it.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Make sure the system configuration works after a restart of the
+/etc/init.d/network script, as well as a system reboot.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+If you still have problems, look at the file in the /root/backup
+directory. If you're not sure which file has been changed, run the <B>ls</B>
+<B>-ltr</B> command. It'll be the last file listed in the output.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">7.
+After completing this lab, restore the latest file copied to the
+/root/backup directory to its original location. The standard
+directory is described in the body of this chapter. Then run the
+<B>chattr</B> <B>-i /root/backup/*</B> command; otherwise, Lab 3
+won't work.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 3</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">This
+lab is based on the Ch3Lab3 script, available in the Chapter3/
+subdirectory, as described earlier. If you followed the instructions
+at the beginning of this section, the script should be available in
+the /root directory. Navigate to that directory and take the
+following steps.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Be
+aware, this lab assumes the first Ethernet adapter on the system is
+active, as device eth0. If that isn't the case on your test system,
+the script used in this lab won't work.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Execute the script for this lab with the <B>./Ch3Lab3</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Test connections to local and remote systems, such as the hostname or
+FQDN for the local system or the IP address of the nameserver listed
+in the /etc/resolv.conf file. Use the <B>ping</B> command as
+appropriate.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Review applicable network configuration files. Run the <B>ifconfig</B>
+command. Can you identify the problem yet?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+If you can't yet identify the problem, try the <B>ifconfig</B> <B>-a</B>
+command. Do you see a difference in the output? What do you do?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Make sure the system configuration works after a restart of the
+/etc/init.d/network script, as well as a system reboot.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 4</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">This
+lab is based on the Ch3Lab4 script, available in the Chapter3/
+subdirectory, as described earlier. If you followed the instructions
+at the beginning of this section, the script should be available in
+your /root directory. Navigate to that directory and take the
+following steps:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Execute the script associated with this lab with the <B>./Ch3Lab4</B>
+command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Test connections to remote systems, such as the hostname or FQDN for
+the local system. Try the <B>ping</B> command as appropriate, on
+local and remote hostnames and IP addresses. Can you identify the
+problem yet?</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+Make sure the system configuration works after a restart of the
+/etc/init.d/network script, as well as a system reboot.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+If you still have problems, look at the file in the /root/backup
+directory. If you're not sure which file has been changed, run the <B>ls</B>
+<B>-ltr</B> command. It'll be the last file listed in the output.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 5</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll set up an /etc/hosts file for the different systems
+on the local network. The instructions in this lab are based on the
+test systems described in Chapter 1.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Back up the /etc/hosts file to an appropriate directory, such as
+/root.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Open the /etc/hosts file. You'll probably see IPv4 and IPv6 entries
+for their respective loopback hostnames and addresses. That can serve
+as a model for the other entries that you'll make in this file.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+You'll probably see an entry with the local hostname and a comment
+about it being added by the Network Manager. Do not change that
+entry.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+When all the noted systems are running, test the result. If these
+systems are on virtual machines, that may depend in part on the
+activation of IP forwarding as discussed in Chapter 1. Run the <B>ping</B>
+command, first on each IP address in /etc/hosts, and then on each
+hostname in /etc/hosts.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 6</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">In
+this lab, you'll use the system-config-network configuration tool
+from the console. But before you do so, remember to back up
+appropriate configuration files. As this is a console tool, you'll
+have to use the TAB and ENTER or SPACEBAR keys to make selections.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">1.
+Back up the network configuration files for the first Ethernet
+adapter from the /etc/sysconfig/network-scripts directory with a
+command like the following:</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 100%">
+<FONT FACE="Courier"><FONT SIZE=2 STYLE="font-size: 11pt"># cp
+/etc/sysconfig/network-scripts/ifcfg-*eth0 /root/</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">2.
+Open the system-config-network configuration tool from a command line
+with the command of the same name.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">3.
+In the console menu that appears, select Device Configuration and
+press ENTER.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">4.
+In the Select A Device Menu that appears, select the first Ethernet
+network card, and press ENTER.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">5.
+Make a change in the current configuration. Assuming a static IP
+address configuration for one of the systems described in Chapter 1,
+you should be able to make a minor change in the IP address. For
+example, you could change the server1.example.com IPv4 address from
+192.168.122.50 to 192.168.122.51. Highlight OK and press ENTER.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">6.
+You're taken back to the Select A Device screen. Highlight the Save
+option and press ENTER.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">7.
+You're taken back to the Select Action screen. Make sure Save&amp;Quit
+is highlighted and press ENTER.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">8.
+Deactivate and then reactivate the first Ethernet card with the
+<B>ifdown</B> <B>eth0</B> and <B>ifup</B> <B>eth0</B> commands, and
+check the result with the <B>ifconfig</B> <B>eth0</B> and <B>route -n</B>
+commands. The configuration of the network card and the associated
+routing table should reflect the new configuration.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">9.
+Use the <B>diff</B> command to analyze the difference between the
+ifcfg-eth0 files in the /etc/sysconfig/network-scripts and the /root
+directories. (If you've previously used the Network Connections tool,
+the file name may be ifcfg-System_eth0.)</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">10.
+If you're really interested in the differences, compare files created
+with a static and a dynamic IP address. In the system-config-network
+tool, that's based on the Use DHCP option in Step 5.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">11.
+To restore the original configuration, restore the ifcfg-eth0 file to
+the /etc/sysconfig/network-scripts directory and restart the network
+with the <B>/etc/init.d/network restart</B> command.</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<B>Lab 7</B></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">Repeat
+the process described in Lab 6 with the Network Connections tool. To
+open it, start a GUI and click System | Preferences | Network
+Connections; alternatively, from a command line, run the
+<B>nm-connection-editor</B> command. That command also works from a
+remote console, as long as you've logged in with the help of the <B>ssh</B>
+<B>-X</B> command described in Chapter 2.</P>
+</BODY>
+</HTML>

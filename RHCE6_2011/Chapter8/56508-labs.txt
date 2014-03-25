@@ -1,0 +1,31 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 8. Most of the labs for this chapter are straightforward and require a very few commands or changes to one or two configuration files.
+
+
+Lab 1
+
+For this lab, create a new user named newguy. Make sure that user is a member of the users group. Create a second user named intern. Create a special group named peons, and make both new users members of that group. Assign a GID of 123456 to that group.
+
+
+Lab 2
+In this lab, you'll make it a bit more difficult for the root administrative user to log into any console. Make whatever changes are required to limit local access from the root user to the sixth virtual console
+
+
+Lab 3
+Create a new user named senioradm. Set up that user with full sudo privileges. But user senioradm should still be required to enter his regular account password before he's allowed to run an administrative command.
+
+
+Lab 4
+
+Create a new user named junioradm. Set up that user with privileges to run the fdisk command, with the help of sudo. In this case, user junioradm should still be required to enter his regular account password before he's allowed to run the fdisk command.
+
+
+Lab 5
+
+Make sure all new users get a copy of the info-* subdirectory of the /usr/share/doc directory, including all files therein. Test the result by creating a new user named infouser with the useradd command and the User Manager.
+
+
+Lab 6
+
+In this lab, you'll create a private directory for a group of engineers designing some galleys. You'll want to create a group named galley for the engineers named mike, rick, terri, and maryam. They'll want to share files in the /home/galley directory. What do you need to do?

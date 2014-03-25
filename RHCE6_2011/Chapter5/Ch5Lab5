@@ -1,0 +1,3 @@
+#!/bin/bash
+/bin/mkdir /root/backup
+/bin/mv /boot/grub/grub.conf /root/backup/

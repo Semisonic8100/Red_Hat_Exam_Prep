@@ -1,0 +1,141 @@
+LABS
+
+During the Red Hat exams, the tasks will be presented electronically. Therefore, this book presents most of the labs electronically as well. For more information, see the Lab Questions section toward the end of Chapter 3.
+
+While there's no longer a separate troubleshooting section on the RHCSA/RHCE exams, troubleshooting skills are still useful on hands-on exams--and on the job. So the first four lab will help you set up a troubleshooting scenario. Standard warning: these labs, even when properly executed, can render a system unusable. So do not run these labs on a system where you need the data. Worst case, you should be prepared to reinstall RHEL 6 on that system.
+
+For the first four labs, you'll need to execute scripts from the Chapter3/ directory of the CD included with the book. For example, the script for the first lab is called Ch3Lab1. In all cases, you'll need to copy the script to the server1.example.com test system. The following steps assume the system is on a KVM-based virtual machine. If it's on a different virtual machine manager such as VMware or Virtualbox, you'll have to consult the documentation for that virtual machine manager, at least for instructions on how to connect a CD/DVD drive. But remember, only KVM is a virtualization technology found on RHEL 6. Don't look at the contents of the copied scripts or files, or the files in the /root/backup directory, until the lab is complete. The following are steps common to those first four labs.
+
+
+1. Open the KVM Virtual Machine Manager from a GUI command line with the virt-manager command.
+
+2. Connect to the localhost (QEMU) system.
+
+3. Double-click on the virtual machine with the server1.example.com system. In the window that appears, click View | Details.
+
+4. Insert the CD for the book. Use the options that appear to connect the CD/DVD drive to the virtual machine. Return to the console for the virtual machine by clicking View | Console.
+
+5. Boot the server1.example.com system. Mount the book CD with the mount /dev/cdrom /media command.
+
+6. Log in to the root administrative account.
+
+7. Make sure you're in the /root directory with the cd /root command. Copy the noted scripts (and associated test files) from the CD to the root user's home directory with  the cp /media/Chapter3/Ch3Lab* ~ command.
+
+8. These labs should work even if the /root/backup directory exists, though you'll see an error message if it does.
+
+9. Make sure the scripts are executable; run the chmod +x Ch3Lab? command.
+
+
+Lab 1
+
+This lab is based on the Ch3Lab1 script, available in the Chapter3/ subdirectory, as described earlier. If you followed the instructions at the beginning of this section, the script should be available in the /root directory. Navigate to that directory and take the following steps:
+
+1. Execute the script for this lab with the ./Ch3Lab1 command.
+
+2. Deactivate the current network device. If it's eth0, run the ifdown eth0 down command. If uncertain, run the ifconfig command; substitute for eth0 as needed.
+
+3. Restart networking with the /etc/init.d/network restart command. What happens? Can you connect? Start looking through network configuration files until you can identify and repair the problem.
+
+4. If you don't see the problem right away, go through the different configuration files discussed in the chapter. You may need to make a couple of changes to a configuration file.
+
+5. Once you've identified and fixed the problem in the appropriate configuration file, you'll be ready to run the /etc/init.d/network restart command and see successful messages.
+
+6. Make sure the system configuration works after a restart of the /etc/init.d/network script, as well as a system reboot.
+
+7. If you still have problems, look at the file in the /root/backup directory. If you're not sure which file has been changed, run the ls -ltr command. It'll be the last file listed in the output. Even if you don't have problems, look at the file in that directory. You may have forgotten something.
+
+
+Lab 2
+
+This lab is based on the Ch3Lab2 script, available in the Chapter3/ subdirectory, as described earlier. If you followed the instructions at the beginning of this section, the script should be available in the /root directory. Navigate to that directory and take the following steps:
+
+1. Execute the script associated with this lab with the ./Ch3Lab2 command.
+
+2. Test connections to local and remote systems, such as the hostname or FQDN for the local system and the IP address of the nameserver in the /etc/resolv.conf file. Try the ping command as appropriate.
+
+3. Review applicable network configuration files. Run the ifconfig command. Review the information given for consistency. Can you identify the problem yet?
+
+4. If you can't yet identify the problem, open the Network Manager Network Connections tool. Review the wired Ethernet connections. If you see the inconsistency, address it.
+
+5. Make sure the system configuration works after a restart of the /etc/init.d/network script, as well as a system reboot.
+
+6. If you still have problems, look at the file in the /root/backup directory. If you're not sure which file has been changed, run the ls -ltr command. It'll be the last file listed in the output.
+
+7. After completing this lab, restore the latest file copied to the /root/backup directory to its original location. The standard directory is described in the body of this chapter. Then run the chattr -i /root/backup/* command; otherwise, Lab 3 won't work.
+
+
+Lab 3
+
+This lab is based on the Ch3Lab3 script, available in the Chapter3/ subdirectory, as described earlier. If you followed the instructions at the beginning of this section, the script should be available in the /root directory. Navigate to that directory and take the following steps.
+
+Be aware, this lab assumes the first Ethernet adapter on the system is active, as device eth0. If that isn't the case on your test system, the script used in this lab won't work.
+
+1. Execute the script for this lab with the ./Ch3Lab3 command.
+
+2. Test connections to local and remote systems, such as the hostname or FQDN for the local system or the IP address of the nameserver listed in the /etc/resolv.conf file. Use the ping command as appropriate.
+
+3. Review applicable network configuration files. Run the ifconfig command. Can you identify the problem yet?
+
+4. If you can't yet identify the problem, try the ifconfig -a command. Do you see a difference in the output? What do you do?
+
+5. Make sure the system configuration works after a restart of the /etc/init.d/network script, as well as a system reboot.
+
+
+Lab 4
+
+This lab is based on the Ch3Lab4 script, available in the Chapter3/ subdirectory, as described earlier. If you followed the instructions at the beginning of this section, the script should be available in your /root directory. Navigate to that directory and take the following steps:
+
+1. Execute the script associated with this lab with the ./Ch3Lab4 command.
+
+2. Test connections to remote systems, such as the hostname or FQDN for the local system. Try the ping command as appropriate, on local and remote hostnames and IP addresses. Can you identify the problem yet?
+
+3. Make sure the system configuration works after a restart of the /etc/init.d/network script, as well as a system reboot.
+
+4. If you still have problems, look at the file in the /root/backup directory. If you're not sure which file has been changed, run the ls -ltr command. It'll be the last file listed in the output.
+
+
+Lab 5
+
+In this lab, you'll set up an /etc/hosts file for the different systems on the local network. The instructions in this lab are based on the test systems described in Chapter 1.
+
+1. Back up the /etc/hosts file to an appropriate directory, such as /root.
+
+2. Open the /etc/hosts file. You'll probably see IPv4 and IPv6 entries for their respective loopback hostnames and addresses. That can serve as a model for the other entries that you'll make in this file.
+
+3. You'll probably see an entry with the local hostname and a comment about it being added by the Network Manager. Do not change that entry.
+
+4. When all the noted systems are running, test the result. If these systems are on virtual machines, that may depend in part on the activation of IP forwarding as discussed in Chapter 1. Run the ping command, first on each IP address in /etc/hosts, and then on each hostname in /etc/hosts.
+
+
+Lab 6
+
+In this lab, you'll use the system-config-network configuration tool from the console. But before you do so, remember to back up appropriate configuration files. As this is a console tool, you'll have to use the TAB and ENTER or SPACEBAR keys to make selections.
+
+1. Back up the network configuration files for the first Ethernet adapter from the /etc/sysconfig/network-scripts directory with a command like the following:
+
+# cp /etc/sysconfig/network-scripts/ifcfg-*eth0 /root/
+
+2. Open the system-config-network configuration tool from a command line with the command of the same name.
+
+3. In the console menu that appears, select Device Configuration and press ENTER.
+
+4. In the Select A Device Menu that appears, select the first Ethernet network card, and press ENTER.
+
+5. Make a change in the current configuration. Assuming a static IP address configuration for one of the systems described in Chapter 1, you should be able to make a minor change in the IP address. For example, you could change the server1.example.com IPv4 address from 192.168.122.50 to 192.168.122.51. Highlight OK and press ENTER.
+
+6. You're taken back to the Select A Device screen. Highlight the Save option and press ENTER.
+
+7. You're taken back to the Select Action screen. Make sure Save&Quit is highlighted and press ENTER.
+
+8. Deactivate and then reactivate the first Ethernet card with the ifdown eth0 and ifup eth0 commands, and check the result with the ifconfig eth0 and route -n commands. The configuration of the network card and the associated routing table should reflect the new configuration.
+
+9. Use the diff command to analyze the difference between the ifcfg-eth0 files in the /etc/sysconfig/network-scripts and the /root directories. (If you've previously used the Network Connections tool, the file name may be ifcfg-System_eth0.)
+
+10. If you're really interested in the differences, compare files created with a static and a dynamic IP address. In the system-config-network tool, that's based on the Use DHCP option in Step 5.
+
+11. To restore the original configuration, restore the ifcfg-eth0 file to the /etc/sysconfig/network-scripts directory and restart the network with the /etc/init.d/network restart command.
+
+
+Lab 7
+
+Repeat the process described in Lab 6 with the Network Connections tool. To open it, start a GUI and click System | Preferences | Network Connections; alternatively, from a command line, run the nm-connection-editor command. That command also works from a remote console, as long as you've logged in with the help of the ssh -X command described in Chapter 2.

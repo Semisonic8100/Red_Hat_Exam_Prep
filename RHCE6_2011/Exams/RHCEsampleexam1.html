@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Preepti">
+	<META NAME="CREATED" CONTENT="20110506;14380000">
+	<META NAME="CHANGEDBY" CONTENT="LeeAnn Pickrell">
+	<META NAME="CHANGED" CONTENT="20110517;11060500">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 1in }
+		P { text-indent: 0.5in; margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 150%; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<P CLASS="western" ALIGN=LEFT STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%; widows: 0; orphans: 0">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>RHCE Sample Exam
+1</B></FONT></FONT></P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+Start with the preconfigured RHEL 6 system described in Appendix A.
+Make sure that system is currently powered down. As discussed in
+Appendix A, a current repository of the installation DVD is available
+from an FTP server configured on the local system. SELinux should be
+set to enforcing mode. You'll have two hours to complete the
+following tasks:</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+1. Configure an SSH server with access limited to the local network.
+Create local users named katie and dickens. Limit SSH access on that
+server only to user katie.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+2. Configure a Samba server. Share a directory named /food with user
+dickens. Share a second directory named /book limited to users tim
+and stephanie.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+3. Set up a vsFTP server with access limited to the
+server1.example.com and the physical host system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+4. Set up a local NTP server, accessible to the local network.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+5. Configure an NFS server to share the /home directory only with the
+physical host system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+6. Configure Apache with two secure web sites on the same virtual
+server. Call those web sites shost1.example.com and
+shost2.example.com. Create and configure an appropriate SSL key for
+those web sites.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+7. Configure a local caching nameserver, and set up the local system
+to use that nameserver.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+8. Create a script that backs up all files from the /home directory
+on a daily basis.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+9. Create an RPM from a single file. Use the README file in the
+/usr/share/doc/tcp_wrappers-7.6 directory. Set up the RPM with a
+package name of tcpwrapdoc, version 1.0. When installed, it should
+write the README file to the /opt/tcpwrap directory.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+10. Configure IPv4 and IPv6 forwarding on the local system.</P>
+<P CLASS="western" STYLE="text-indent: 0in; margin-bottom: 0in; line-height: 100%">
+11. Set up system activity reports to run the related accounting tool
+every five minutes.</P>
+</BODY>
+</HTML>
